@@ -32,7 +32,7 @@ Components
 
 Templating
 ----------
-    Uses JSON2HTML = markup is modeled in an object, data is provided by the component's data() function,
+    Uses Handlebars script-tag style templates, data is provided by a boilerplate object in the component file,
 the two are combined by the lib and pasted into the DOM.
 
 Caching
