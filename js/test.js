@@ -1,28 +1,34 @@
-var Lean = {
-	com: {},
-	component: function(name, obj) {
-		Lean.com[name] = obj();
-	},
-	fetch: function(name, container) {
-		var scriptURL = "com/" + name + ".js";
+var Lean = (function() {
+	_context = {};
 
-		$.getScript(scriptURL, function(xhr) {
-			try {
-				var currentComponent = Lean.com[name];
-			} catch(err) {
-				eval(xhr);
-				var currentComponent = Lean.com[name];
-			}
+	return {
+		context: function(name) {
+			return _context[name];
+		},
+		fetch: function(name, container) {
+			var scriptURL = "com/" + name + ".js";
 
-			currentComponent.before(function() {
-				$("#" + container).html(json2html.transform(currentComponent.data, currentComponent.template));
+			$.getScript(scriptURL, function(xhr) {
+				try {
+					var currentComponent = Lean.com[name];
+				} catch(err) {
+					eval(xhr);
+					var currentComponent = Lean.com[name];
+				}
 
-				currentComponent.after();
+				currentComponent.before(function() {
+					$("#" + container).html(json2html.transform(currentComponent.data, currentComponent.template));
+
+					currentComponent.after();
+				});
 			});
-		});
-	},
-	state: {}
-}
+		},
+		model: function(name, obj) {
+			_context[name] = obj;
+		},
+		state: {}
+	}
+})()
 
 function extractParams(){
 	var params = decodeURI(window.location.search.substring(1,window.location.search.length));
@@ -39,14 +45,25 @@ function extractParams(){
 }
 
 function handleRoute() {
-	var route = window.location.hash.substring(1,window.location.hash.length).split(":");
-	var script = "com/" + route[0] + ".js";
-	var component = route[0];
-	var container = route[1];
+	var URL, containerID, component, html, context, container, template, source, route;
 
 	Lean.state = extractParams();
-	if (component.length && container.length)
-		Lean.fetch(component, container);
+
+	route = window.location.hash.substring(1, window.location.hash.length).split(":");
+	component = route[0];
+	containerID = route[1];
+	URL = "com/" + component + ".html";
+
+	if (component.length && containerID.length) {
+		$("#LeanComponent").load(URL, function() {
+			source = $("#" + component).html();
+			template = Handlebars.compile(source);
+			container = $("#" + route[1]);
+			context = Lean.context(component);
+			html = template(context);
+			container.html(html);
+		});
+	}
 }
 
 $(function() {

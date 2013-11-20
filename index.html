@@ -10,29 +10,26 @@
 		<script src="lib/modernizr.js"></script>
 		<script src="lib/firebase.js"></script>
 		<script src="lib/bacon.js"></script>
-		<script src="lib/json2html.js"></script>
+		<script src="lib/handlebars.js"></script>
 		<script src="lib/jquery.js"></script>
 		<script src="lib/bacon.jquery.js"></script>
-		<script src="lib/json2html.jquery.js"></script>
-		<!--<script src="lib/history.js"></script>-->
-		<!--<script src="lib/history.jquery.js"></script>-->
 		<script src="lib/bootstrap.js"></script>
 
 		<script src="js/test.js"></script>
 
-		<script id="componentScript" src=""></script>
+		<script id="LeanComponent" type="text/x-lean-component"></script>
 	</head>
 
 	<body>
 		<nav class="btn-group btn-group-xs container row" role="navigation">
-			<a class="btn" href="#main:main">Link</a>
-			<a class="btn" href="#other:main">Link</a>
-			<a class="btn" href="?id=1&flarn=asdf#flarn:main">Link</a>
+			<a class="btn" href="#main:mainContent">Link</a>
+			<a class="btn" href="#other:mainContent">Link</a>
+			<a class="btn" href="?id=1&flarn=asdf#flarn:mainContent">Link</a>
 		</nav>
 
 		<div class="row">asdf</div>
 		<div class="row">asdf</div>
 
-		<div class="container row" id="main"></div>
+		<div class="container row" id="mainContent"></div>
 	</body>
 </html>

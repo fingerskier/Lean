@@ -1,9 +1,9 @@
 Lean
 ====
-  The Lean framework is designed for rapid development of browser-based javascript applications.  It is intended to
-  be elegant and zero configuration.
-  Basically it's jQuery, Bacon, and a smattering of other libs serving as my test-bed for framework exploration.  I
-  use Firebase but that's not necessary (though it is included).
+  The Lean framework is a super elegant framework for developing browser-based javascript applications.
+
+  In reality it's my test-bed for various ultra-simple, zero-configuration concepts and libraries.  Libraries
+  currently include jQuery, Bacon, Handlebars, Modernizr, Bootstrap, and Firebase.
 
 
 Router
