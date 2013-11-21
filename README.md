@@ -7,7 +7,7 @@ Lean
 
 
 Router
-------
+======
 	Listens for URL-haschange events, parses the hash to derive the component-filename and container node,
 	then loads the component, fires it's before() method, inserts the template, and fires after() method.
 
@@ -16,11 +16,11 @@ Router
 		Devise a scheme for nested routes so a page refresh builds a nested component from the top-down.
 
 Data-Binding
-------------
+============
 	Data-binding is accomplished using Bacon.js Model objects and event-streams.
 
 Components
-----------
+==========
   function MyComponent() {
     var privateVariable = new SomeObj(ID);
 
@@ -39,11 +39,11 @@ Components
       Devise a way to simplify component boilerplate...so you don't have to name the script-tag and the model...
 
 Templating
-----------
+==========
 	Lean uses Handlebars script-tag style templates, data is provided by a boilerplate object in the component file,
 	the two are combined by the lib and pasted into the DOM.
 
 Caching
--------
+=======
 	By default jQuery does not cache AJAX responses (a.k.a. components) but you can make it do so by setting the
 	appropriate flag in $.ajaxSetup().
