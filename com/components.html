@@ -1,11 +1,22 @@
 <script type="text/x-handlebars-template" id="components">
 	<div class="container row">
-		This is the {{name}} content.
+		<span class="hero">{{name}}</span>
+		Components are distinct pieces of the application consisting of a view and a controller.  Views are represented
+		as Handlebars script-tag templates.  Data and logic is provided by the controller.
+	</div>
+
+	<div class="container row">
+		For example, here is the code for the component you're looking at:
+		<img src="img/componentsComponent.png" alt="components component code"/>
 	</div>
 </script>
 
 <script>
-	Lean.model("components", {
-		name: "components"
+	Lean.controller("components", {
+		before: function() { },
+		after: function() { },
+		data: {
+			name: "Components"
+		}
 	})
 </script>

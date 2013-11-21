@@ -1,0 +1,20 @@
+<script type="text/x-handlebars-template" id="router">
+	<div class="container row">
+		{{name}}
+	</div>
+
+	<div class="container row">
+		The router is straight-forward and not configurable.  It reads the URL, parsing the query-parameters into an
+		object called Lean.state, then parses the hash value which has this format: #component/name:container/ID.  The
+		component-name maps diretly to an HTML file which <i>should</i> be of the correct format.  The component's
+		template and data are compiled and shoved into a container-node gotten by it's ID attributes.
+	</div>
+</script>
+
+<script>
+	Lean.controller("router", {
+		data: {
+			name: "Router"
+		}
+	})
+</script>

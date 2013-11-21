@@ -1,11 +1,24 @@
 <script type="text/x-handlebars-template" id="state">
 	<div class="container row">
-		This is the {{name}} content.
+		{{name}}
+	</div>
+
+	<div class="container row">
+		Lean.state is an object representing the URL search string.  If you look the URL for this page you'll note
+		several query parameters, these would available in said object.
+	</div>
+
+	<div class="container row">
+		So, in Lean the page-name represents an application (or a major feature); the query-string represents a
+		persistent state; and the hash represents the current view/component and the container in which it resides.  This
+		is how Lean deals with page refreshes and browser history.
 	</div>
 </script>
 
 <script>
-	Lean.model("state", {
-		name: "state"
+	Lean.controller("state", {
+		data: {
+			name: "State"
+		}
 	})
 </script>

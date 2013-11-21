@@ -1,11 +1,30 @@
 <script type="text/x-handlebars-template" id="streams">
 	<div class="container row">
-		This is {{name}} content
+		{{name}}
+	</div>
+
+	<div class="container row">
+		BaconJS provides the declarative glue that makes Lean work.  While the component-controllers implement data
+		retrieval and view setup/teardown Bacon gives us the means to describe behavior.  In Lean there are two sources
+		of events: the UI and the Model.  We tell Bacon which event-source to tap and it will attach an event listener
+		and output a steady stream of events as they occur...which we can garner and use in a callback function.  These
+		streams can be composed in different ways like combinations, mappings, and accumulations.
+	</div>
+
+	<div class="row">
+		Try it yourself:
+	</div>
+	<div class="container row">
+		<div class="col-xs-2">Mock UI</div>
+		<textarea class="col-xs-2" id="baconSandbox">Bacon sandbox area</textarea>
+		<div class="col-xs-2">Mock Model</div>
 	</div>
 </script>
 
 <script>
-	Lean.model("streams", {
-		name: "streams"
+	Lean.controller("streams", {
+		data: {
+			name: "Streams"
+		}
 	})
 </script>

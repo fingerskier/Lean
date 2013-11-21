@@ -1,11 +1,19 @@
 <script type="text/x-handlebars-template" id="templates">
 	<div class="container row">
-		This is the {{name}} content.
+		{{name}}
+	</div>
+
+	<div class="container row">
+		Templating is handled by the Handlebars library.  Basically, component files contain a script-tag which contains
+		the template.  The component's controller [ostensibly] provides data which is used by Handlebars to generate the
+		markup...which is thrown into a container specified in the URL.
 	</div>
 </script>
 
 <script>
-	Lean.model("templates", {
-		name: "templates"
+	Lean.controller("templates", {
+		data: {
+			name: "Templates"
+		}
 	})
 </script>
