@@ -14,21 +14,21 @@
 		<script src="lib/jquery.js"></script>
 		<script src="lib/bacon.jquery.js"></script>
 		<script src="lib/bootstrap.js"></script>
-
-		<script src="js/test.js"></script>
+		<script src="lib/lean.js"></script>
 
 		<script id="LeanComponent" type="text/x-lean-component"></script>
 	</head>
 
 	<body>
-		<nav class="btn-group btn-group-xs container row" role="navigation">
-			<a class="btn" href="#main:mainContent">Link</a>
-			<a class="btn" href="#other:mainContent">Link</a>
-			<a class="btn" href="?id=1&flarn=asdf#flarn:mainContent">Link</a>
-		</nav>
+		<h1 class="hero">Lean</h1>
 
-		<div class="row">asdf</div>
-		<div class="row">asdf</div>
+		<nav class="btn-group btn-group-xs container row" role="navigation">
+			<a class="btn" href="#lean:mainContent">Lean</a>
+			<a class="btn" href="#components:mainContent">Components</a>
+			<a class="btn" href="?id=1&flarn=asdf#state:mainContent">State</a>
+			<a class="btn" href="#streams:mainContent">Streams</a>
+			<a class="btn" href="#templates:mainContent">Templates</a>
+		</nav>
 
 		<div class="container row" id="mainContent"></div>
 	</body>
