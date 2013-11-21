@@ -1,23 +1,63 @@
 <script type="text/x-handlebars-template" id="streams">
-	<div class="container row">
-		{{name}}
-	</div>
+	<h3>{{name}}</h3>
 
-	<div class="container row">
+	<p class="lead">
 		BaconJS provides the declarative glue that makes Lean work.  While the component-controllers implement data
 		retrieval and view setup/teardown Bacon gives us the means to describe behavior.  In Lean there are two sources
-		of events: the UI and the Model.  We tell Bacon which event-source to tap and it will attach an event listener
+		of events: the UI and the Model.
+	</p>
+	<p>
+		We tell Bacon which event-source to tap and it will attach an event listener
 		and output a steady stream of events as they occur...which we can garner and use in a callback function.  These
 		streams can be composed in different ways like combinations, mappings, and accumulations.
-	</div>
+	</p>
 
-	<div class="row">
-		Try it yourself:
-	</div>
+	<h3 id="streamsHeader">Try it yourself:</h3>
+
 	<div class="container row">
-		<div class="col-xs-2">Mock UI</div>
-		<textarea class="col-xs-2" id="baconSandbox">Bacon sandbox area</textarea>
-		<div class="col-xs-2">Mock Model</div>
+		<div class="col-xs-4">
+			<form class="form-inline input-sm" role="form">
+				<div class="form-group">
+					<label for="emailInput">Email</label>
+					<input class="form-control" id="emailInput" placeholder="enter email@domain.com" type="email">
+				</div>
+
+				<div class="checkbox-inline">
+					<label for="redColor">
+						<input id="redColor" name="red" type="checkbox" value="0xFF0000">Red
+					</label>
+					<label for="blueColor">
+						<input id="blueColor" name="blue" type="checkbox" value="0x0000FF">Blue
+					</label>
+					<label for="greenColor">
+						<input id="greenColor" name="green" type="checkbox" value="0X00ff00">Green
+					</label>
+				</div>
+
+				<div class="radio-inline">
+					<label for="maleGender">
+						<input id="maleGender" name="gender" type="radio" value="male">Male
+					</label>
+					<label for="femaleGender">
+						<input id="femaleGender" name="gender" type="radio" value="female">Female
+					</label>
+					<label for="otherGender">
+						<input id="otherGender" name="gender" type="radio" value="other">Other
+					</label>
+				</div>
+
+				<button id="Abutton" type="button">A Button</button>
+
+				<button id="Bbutton" type="button">B Button</button>
+			</form>
+		</div>
+
+		<div class="col-xs-4">
+			Bacon sandbox area
+			<textarea id="baconSandbox"></textarea>
+		</div>
+
+		<div class="col-xs-4">Mock Model</div>
 	</div>
 </script>
 
@@ -25,6 +65,18 @@
 	Lean.controller("streams", {
 		data: {
 			name: "Streams"
+		},
+		after: function() {
+			colors = $("input[type=checkbox]");
+			color = Bacon.$.checkBoxGroupValue(colors);
+			color.onValue(function(V) {
+				var I, result = 0;
+
+				for (I in V)
+					result += V[I];
+
+				$("#streamsHeader").css("color", "#" + parseInt(result, 16).toString());
+			});
 		}
 	})
 </script>
