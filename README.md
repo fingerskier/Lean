@@ -1,6 +1,6 @@
 Lean
 ====
-  The Lean framework is a super elegant framework for developing browser-based javascript applications.
+  Lean is a single-page browser app based existing technologies and a few simple Javascripts concepts.
 
   In reality it's my test-bed for various ultra-simple, zero-configuration concepts and libraries.  Libraries
   currently include jQuery, Bacon, Handlebars, Modernizr, Bootstrap, and Firebase.
@@ -8,8 +8,12 @@ Lean
 
 Router
 ------
-    Listens for URL events, parses the hash to derive the component-filename, then loads the component,
-fires it's before() method, inserts the template, and fires after() method.
+	Listens for URL-haschange events, parses the hash to derive the component-filename, then loads the component,
+	fires it's before() method, inserts the template, and fires after() method.
+
+	TODO
+	----
+		Devise a scheme for nested routes so a page refresh builds a nested component from the top-down.
 
 Data-Binding
 ------------
@@ -29,6 +33,10 @@ Components
 
     return convention;
   }
+
+    TODO
+    ----
+      Devise a way to simplify component boilerplate...so you don't have to name the script-tag and the model...
 
 Templating
 ----------

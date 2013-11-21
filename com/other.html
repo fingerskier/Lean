@@ -1,11 +1,16 @@
 <script type="text/x-handlebars-template" id="other">
 	<div class="container row">
-		This is other content.
+		This is {{name}} content....with links to nested content.
+
+		<a href="#sub1:subContent">Sub-Content 1</a>
+		<a href="#sub2:subContent">Sub-Content 2</a>
+
+		<div id="subContent"></div>
 	</div>
 </script>
 
 <script>
 	Lean.model("other", {
-		item: "value"
+		name: "other"
 	})
 </script>

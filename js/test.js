@@ -5,24 +5,6 @@ var Lean = (function() {
 		context: function(name) {
 			return _context[name];
 		},
-		fetch: function(name, container) {
-			var scriptURL = "com/" + name + ".js";
-
-			$.getScript(scriptURL, function(xhr) {
-				try {
-					var currentComponent = Lean.com[name];
-				} catch(err) {
-					eval(xhr);
-					var currentComponent = Lean.com[name];
-				}
-
-				currentComponent.before(function() {
-					$("#" + container).html(json2html.transform(currentComponent.data, currentComponent.template));
-
-					currentComponent.after();
-				});
-			});
-		},
 		model: function(name, obj) {
 			_context[name] = obj;
 		},
@@ -44,25 +26,31 @@ function extractParams(){
 	return result;
 }
 
+function fetchComponent(name, containerID) {
+	var source, template, container, context, html, URL;
+
+	URL = "com/" + name + ".html";
+	$("#LeanComponent").load(URL, function() {
+		source = $("#" + name).html();
+		template = Handlebars.compile(source);
+		container = $("#" + containerID);
+		context = Lean.context(name);
+		html = template(context);
+		container.html(html);
+	});
+}
+
 function handleRoute() {
-	var URL, containerID, component, html, context, container, template, source, route;
+	var containerID, component, route;
 
 	Lean.state = extractParams();
 
 	route = window.location.hash.substring(1, window.location.hash.length).split(":");
 	component = route[0];
 	containerID = route[1];
-	URL = "com/" + component + ".html";
 
 	if (component.length && containerID.length) {
-		$("#LeanComponent").load(URL, function() {
-			source = $("#" + component).html();
-			template = Handlebars.compile(source);
-			container = $("#" + route[1]);
-			context = Lean.context(component);
-			html = template(context);
-			container.html(html);
-		});
+		fetchComponent(component, containerID);
 	}
 }
 
