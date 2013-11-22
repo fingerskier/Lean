@@ -1,8 +1,8 @@
 Lean
 ====
-  Lean is a single-page browser app based existing technologies and a few simple Javascripts concepts.
+  Lean is a single-page browser app based on jQuery and Baconjs.
 
-  In reality it's my test-bed for various ultra-simple, zero-configuration concepts and libraries.  Libraries
+  It's my test-bed for various ultra-simple, zero-configuration concepts and libraries.  Libraries
   currently include jQuery, Qunit, Bacon, Handlebars, Modernizr, Bootstrap, and Firebase.
 
 
@@ -39,10 +39,6 @@ Components
 
     return convention;
   }
-
-    TODO
-    ----
-      Devise a way to simplify component boilerplate...so you don't have to name the script-tag and the model...
 
 Templating
 ==========
