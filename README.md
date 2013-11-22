@@ -10,10 +10,16 @@ Router
 ======
 	Listens for URL-haschange events, parses the hash to derive the component-filename and container node,
 	then loads the component, fires it's before() method, inserts the template, and fires after() method.
+	The content will be pasted into an element with an id="componentName" or, if that doesn't exist,
+	it looks for a container with class="lean-view" at the deepest level available (because in a nested view there may
+	be lean-view containers within other lean-view containers).
+	Bottom-line: routing is simplified by having templates, controllers, and view-containers all same-named or use the
+	"view" class.  This facilitates rebuilding of dynamic views on a page-refresh: Lean will simply walk back and forth
+	 through the history to refresh nested views.
 
 	TODO
 	----
-		Devise a scheme for nested routes so a page refresh builds a nested component from the top-down.
+		Setup a Bacon stream to handle hashchange events
 
 Data-Binding
 ============
